@@ -7,7 +7,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
-  // TODO - Add your webhook secret to .env.local
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
@@ -54,6 +53,8 @@ export async function POST(req: Request) {
 
   // Get the ID and type
   const eventType = evt.type;
+
+  console.log({ eventType });
 
   // If the event is a user.created event, create a new user in the database
   if (eventType === "user.created") {
