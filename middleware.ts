@@ -4,7 +4,7 @@ export default authMiddleware({
   publicRoutes: [
     "/",
     "/api/webhook",
-    "/quesiton/:id",
+    "/question/:id",
     "/tags",
     "/tags/:id",
     "profile/:id",
