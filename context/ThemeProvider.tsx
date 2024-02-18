@@ -1,5 +1,6 @@
 "use client";
 
+// import { createUser } from "@/lib/actions/user.action";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface ThemeContextType {
@@ -27,6 +28,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    // const update = async () => {
+    //   const mongoUser = await createUser({
+    //     clerkId: "hfudysgfyuergdfu",
+    //     name: "John Doe",
+    //     username: "johndoe",
+    //     email: "john@gmail.com",
+    //     picture: "wtvthefuckever.jpg",
+    //   });
+
+    //   console.log(mongoUser);
+    // };
+    // update();
     handleThemeChange();
   }, [mode]);
   // removed the "mode" variable from dependency array to avoid infinite loop
@@ -49,3 +62,17 @@ export function useTheme() {
 
   return context;
 }
+// useEffect(() => {
+//   const update = async () => {
+//     const mongoUser = await createUser({
+//       clerkId: "hfudysgfyuergdfu",
+//       name: "John Doe",
+//       username: "johndoe",
+//       email: "john@gmail.com",
+//       picture: "wtvthefuckever.jpg",
+//     });
+
+//     console.log(mongoUser);
+//   };
+//   update();
+// }, []);
