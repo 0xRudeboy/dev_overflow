@@ -28,12 +28,13 @@ export async function getUserById(params: any) {
 export async function createUser(userData: CreateUserParams) {
   try {
     connectToDatabase();
-    const newUser = User.create(userData);
+
+    const newUser = await User.create(userData);
 
     return newUser;
-  } catch (e) {
-    console.log(e);
-    throw e;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }
 
