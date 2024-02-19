@@ -32,16 +32,7 @@ const Page = async () => {
 
       <section className="mt-12 flex flex-wrap gap-4">
         {result.users.length > 0 ? (
-          result.users.map((user) => (
-            <UserCard
-              key={user._id}
-              user={user}
-              // _id={user._id}
-              // name={user.name}
-              // username={user.username}
-              // picture={user.picture}
-            />
-          ))
+          result.users.map((user) => <UserCard key={user._id} user={user} />)
         ) : (
           // <NoResult
           //   title="There's no users to show"

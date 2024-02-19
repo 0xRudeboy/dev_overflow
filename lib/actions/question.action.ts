@@ -59,6 +59,7 @@ export async function createQuestion(params: CreateQuestionParams) {
     // Increment author's reputation by +5 pts for creating a question
     revalidatePath(path);
   } catch (e) {
-    //
+    console.log(e);
+    throw e;
   }
 }
