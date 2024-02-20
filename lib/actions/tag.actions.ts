@@ -40,3 +40,12 @@ export async function getAllTags(params: GetAllTagsParams) {
     throw e;
   }
 }
+
+// export async function getAllUsers(params: GetAllUsersParams) {
+//   try {
+//     connectToDatabase();
+//   } catch (e) {
+//     console.log(e);
+//     throw e;
+//   }
+// }
