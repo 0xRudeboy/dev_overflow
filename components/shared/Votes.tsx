@@ -8,6 +8,8 @@ import {
 import { upvoteAnswer, downvoteAnswer } from "@/lib/actions/answer.action";
 import { usePathname, useRouter } from "next/navigation";
 import { toggleSaveQuestions } from "@/lib/actions/user.action";
+import { useEffect } from "react";
+import { viewQuestion } from "@/lib/actions/interaction.action";
 
 interface Props {
   type: string;
@@ -31,7 +33,7 @@ const Votes = ({
   hasSaved,
 }: Props) => {
   const pathname = usePathname();
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleSave = async () => {
     toggleSaveQuestions({
@@ -88,7 +90,14 @@ const Votes = ({
       }
     }
   };
-  //   console.log(userId);
+
+  useEffect(() => {
+    viewQuestion({
+      questionId: JSON.parse(itemId),
+      userId: userId ? JSON.parse(userId) : undefined,
+    });
+  }, [itemId, userId, pathname, router]);
+
   return (
     <div className="flex gap-5">
       <div className="flex-center gap-2.5">
