@@ -8,7 +8,6 @@ import {
   GetQuestionByIdParams,
   GetQuestionsParams,
   QuestionVoteParams,
-  ToggleSaveQuestionParams,
 } from "./shared.types";
 import User from "@/database/user.model";
 import { revalidatePath } from "next/cache";
