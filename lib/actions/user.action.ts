@@ -1,7 +1,8 @@
 "use server";
 
 import User from "@/database/user.model";
-import { connectToDatabase, FilterQuery } from "../mongoose";
+import { FilterQuery } from "mongoose";
+import { connectToDatabase } from "../mongoose";
 import {
   CreateUserParams,
   DeleteUserParams,
