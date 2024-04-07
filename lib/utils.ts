@@ -58,3 +58,9 @@ export const formatNumber = (num: number): string => {
     return num.toString();
   }
 };
+// get the javascript date object as a parameter and return a joined date (just a month and year)
+export const getJoinedDate = (date: Date): string => {
+  const month = date.toLocaleString("default", { month: "long" }); // Adding 1 since getMonth() returns zero-based index
+  const year = date.getFullYear();
+  return `${month} ${year}`;
+};
