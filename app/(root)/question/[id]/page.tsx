@@ -25,7 +25,7 @@ const Page = async ({ params, searchParams }: any) => {
 
   const result = await getQuestionById({ questionId: params.id });
 
-  //   console.log(result);
+  // console.log(result.answers);
 
   // testing this ID 65d20aae51d1e163153f7082
 
