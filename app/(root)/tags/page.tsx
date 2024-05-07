@@ -5,9 +5,13 @@ import { TagFilters } from "@/constants/filters";
 import { getAllTags } from "@/lib/actions/tag.actions";
 import React from "react";
 import Link from "next/link";
+import { SearchParamsProps } from "@/types";
 
-const Page = async () => {
-  const result = await getAllTags({});
+const Page = async ({ searchParams }: SearchParamsProps) => {
+  const result = await getAllTags({
+    searchQuery: searchParams.q,
+    filter: searchParams.filter,
+  });
 
   //   console.log(result.tags[0].questions);
 
@@ -44,11 +48,11 @@ const Page = async () => {
                     {tag.name}
                   </p>
                 </div>
-                <p className="small-regular text-dark500_light700 mt-4">
+                {/* <p className="small-regular text-dark500_light700 mt-4">
                   JavaScript, often abbreviated as JS, is a programming language
                   that is one of the core technologies of the World Wide Web,
                   alongside HTML and CSS{" "}
-                </p>
+                </p> */}
                 <p className="small-medium text-dark400_light500 mt-3.5">
                   <span className="body-semibold primary-text-gradient mr-2.5">
                     {tag.questions.length}+

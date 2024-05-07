@@ -36,7 +36,7 @@ const ParsedHTML = ({ data }: Props) => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <div>{parse(data)}</div>
     </div>
   );

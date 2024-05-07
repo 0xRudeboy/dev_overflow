@@ -6,7 +6,7 @@ import RenderTag from "@/components/shared/RenderTag";
 import Votes from "@/components/shared/Votes";
 import { getQuestionById } from "@/lib/actions/question.action";
 import { getUserById } from "@/lib/actions/user.action";
-import { formatNumber } from "@/lib/utils";
+import { formatNumber, getTimestamp } from "@/lib/utils";
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
@@ -70,8 +70,8 @@ const Page = async ({ params, searchParams }: any) => {
         <Metric
           imgUrl="/assets/icons/clock.svg"
           alt="clock icon"
-          value={` asked ${formatNumber(result.createdAt)}`}
-          title="Asked"
+          value={` asked ${getTimestamp(result.createdAt)}`}
+          title=" ago"
           textStyles="small-medium text-dark400_light800"
         />
         <Metric
@@ -107,6 +107,8 @@ const Page = async ({ params, searchParams }: any) => {
         questionId={result._id}
         userId={mongoUser._id}
         totalAnswers={result.answers.length}
+        page={searchParams?.page}
+        filter={searchParams?.filter}
       />
 
       <Answer
