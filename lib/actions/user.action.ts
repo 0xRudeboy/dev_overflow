@@ -288,7 +288,9 @@ export async function getUserQuestions(params: GetUserStatsParams) {
     const userQuestions = await Question.find({ author: userId })
       .skip(skipAmount)
       .limit(pageSize)
+      // Putting the createdAt sort option first will make it take the highest effect/priority
       .sort({
+        createdAt: -1,
         view: -1,
         upvotes: -1,
       })
