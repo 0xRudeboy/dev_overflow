@@ -5,8 +5,15 @@ import LocalSearch from "@/components/shared/search/LocalSearch";
 import { UserFilters } from "@/constants/filters";
 import { getAllUsers } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
+import { Metadata } from "next";
 import Link from "next/link";
 // import NoResult from "@/components/shared/NoResult";
+
+export const metadata: Metadata = {
+  title: "Community | Devflow",
+  description:
+    "Connect with like-minded developers, share your knowledge, and learn from others.",
+};
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({
