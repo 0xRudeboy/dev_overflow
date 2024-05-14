@@ -10,6 +10,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { toggleSaveQuestions } from "@/lib/actions/user.action";
 import { useEffect } from "react";
 import { viewQuestion } from "@/lib/actions/interaction.action";
+import { toast } from "../ui/use-toast";
 
 interface Props {
   type: string;
@@ -46,7 +47,12 @@ const Votes = ({
   const handleVote = async (action: string) => {
     // questions can be upvoted or downvoted
     // answers can only be upvoted or downvoted
-    if (!userId) return;
+    if (!userId) {
+      return toast({
+        title: "Please log in",
+        description: "You need to be logged in to perform this action",
+      });
+    }
 
     if (action === "upvote") {
       if (type === "Question") {
@@ -66,8 +72,11 @@ const Votes = ({
           path: pathname,
         });
       }
-      // todo: show a toast message
-      return;
+
+      return toast({
+        title: `Upvote ${!hasUpvoted ? "Successful" : "Removed"}`,
+        variant: !hasUpvoted ? "default" : "destructive",
+      });
     }
 
     if (action === "downvote") {
