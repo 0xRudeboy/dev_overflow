@@ -42,6 +42,13 @@ const Votes = ({
       userId: JSON.parse(userId),
       path: pathname,
     });
+
+    return toast({
+      title: `Question ${
+        !hasSaved ? "Saved in" : "Removed from"
+      } your collection`,
+      variant: !hasSaved ? "default" : "destructive",
+    });
   };
 
   const handleVote = async (action: string) => {
@@ -97,6 +104,11 @@ const Votes = ({
           path: pathname,
         });
       }
+
+      return toast({
+        title: `Downvote ${!hasDownvoted ? "Successful" : "Removed"}`,
+        variant: !hasDownvoted ? "default" : "destructive",
+      });
     }
   };
 
